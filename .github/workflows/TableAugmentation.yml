@@ -142,7 +142,10 @@ jobs:
       - name: connect to Databricks-sql-cli
         run: |          
           
-          dbsqlcli -e "SELECT * FROM default.diamonds LIMIT 2" --hostname $DBSQL_HOST_NAME --http-path $DBSQL_HTTP_PATH --access-token $DBSQL_ACCESS_TOKEN 
+          dbsqlcli -e "SELECT * FROM default.diamonds LIMIT 2" \
+          --hostname ${{ secrets.DBSQLCLI_HOST_NAME }} \
+          --http-path ${{ secrets.DBSQLCLI_HTTP_PATH }} \
+          --access-token ${{ secrets.DBSQLCLI_ACCESS_TOKEN }}
           
           
           
