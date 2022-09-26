@@ -34,11 +34,14 @@ jobs:
         run: |
           python3 -m pip install databricks-sql-cli
           dbsqlcli
+          
+          
+          
           # todo: update the file 
           dbsqlcli -e "SELECT * FROM default.diamonds LIMIT 2"
-          #  --hostname "$host_name" \
-          #  --http-path "$http_path" \
-          #  --access-token "$access_token"
+            --hostname "$DBSQLCLI_HOST_NAME" \
+            --http-path "$DBSQLCLI_HTTP_PATH" \
+            --access-token "$DBSQLCLI_ACCESS_TOKEN"
 
           
           # todo: need to connect to github secrets and pull the credentials. 
