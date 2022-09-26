@@ -30,7 +30,7 @@ jobs:
         env:
           access_token: ${{ secrets.DBSQLCLI_ACCESS_TOKEN }}
           host_name: ${{ secrets.DBSQLCLI_HOST_NAME }}
-          http_path: ${{ DBSQLCLI_HTTP_PATH }}
+          http_path: ${{ secrets.DBSQLCLI_HTTP_PATH }}
         run: |
           python3 -m pip install databricks-sql-cli
           #dbsqlcli -e "SELECT * FROM default.diamonds LIMIT 2" \
@@ -46,6 +46,5 @@ jobs:
           
           echo Add other actions to build,
           echo test, and deploy your project.
-          echo $access_token
           echo $host_name
           echo $http_path
