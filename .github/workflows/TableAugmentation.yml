@@ -139,6 +139,8 @@ jobs:
 
           
           EOF
+          
+          cat ~/.dbsqlcli/dbsqlclirc
 
       - name: install dbsqlcli
         run: |
