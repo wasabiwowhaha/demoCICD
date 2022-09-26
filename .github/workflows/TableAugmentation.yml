@@ -29,6 +29,10 @@ jobs:
       
       # Runs a set of commands using the runners shell
       - name: create the dbsqlcli config file
+        env:
+          DBSQLCLI_ACCESS_TOKEN: ${{ secrets.DBSQLCLI_ACCESS_TOKEN }}
+          DBSQLCLI_HOST_NAME: ${{ secrets.DBSQLCLI_HOST_NAME }}
+          DBSQLCLI_HTTP_PATH: ${{ secrets.DBSQLCLI_HTTP_PATH }}
         run: |
           mkdir ~/.dbsqlcli
           
@@ -127,6 +131,12 @@ jobs:
 
           # Favorite queries.
           [favorite_queries]
+          
+          [credentials]
+          host_name = "$(DBSQLCLI_HOST_NAME)"
+          http_path = "$(DBSQLCLI_HTTP_PATH)"
+          access_token = "$(DBSQLCLI_ACCESS_TOKEN)"
+
           
           EOF
 
