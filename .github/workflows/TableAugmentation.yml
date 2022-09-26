@@ -139,8 +139,6 @@ jobs:
           access_token = $DBSQLCLI_ACCESS_TOKEN
           
           EOF
-          
-          cat ~/.dbsqlcli/dbsqlclirc
 
       - name: install dbsqlcli
         run: |
@@ -148,9 +146,9 @@ jobs:
           
       - name: connect to Databricks-sql-cli
         run: |          
-          echo $DBSQLCLI_HOST_NAME
+          cat ~/.dbsqlcli/dbsqlclirc
           
-          dbsqlcli -e "SELECT * FROM default.diamonds LIMIT 2"
+          # dbsqlcli -e "SELECT * FROM default.diamonds LIMIT 2"
           
           
           
@@ -160,6 +158,6 @@ jobs:
           # todo: check if tables exists within the cluster. -> perform short simple query. 
           # todo: check if commit file name starts with "create", ends with ".sql"
           
-          echo Add other actions to build,
-          echo test, and deploy your project.
+          #echo Add other actions to build,
+          #echo test, and deploy your project.
           
