@@ -41,7 +41,7 @@ jobs:
           echo trying to run the next step
           
           # todo: update the file 
-          # dbsqlcli -e "SELECT * FROM default.diamonds LIMIT 2"
+          dbsqlcli -e "SELECT * FROM default.diamonds LIMIT 2"
           #  --hostname "$DBSQLCLI_HOST_NAME" \
           #  --http-path "$DBSQLCLI_HTTP_PATH" \
           #  --access-token "$DBSQLCLI_ACCESS_TOKEN"
