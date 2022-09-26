@@ -140,8 +140,13 @@ jobs:
           DBSQLCLI_HOST_NAME: ${{ secrets.DBSQLCLI_HOST_NAME }}
           DBSQLCLI_HTTP_PATH: ${{ secrets.DBSQLCLI_HTTP_PATH }}
         run: |          
+          
+          echo ${DBSQLCLI_HOST_NAME}
+          
           dbsqlcli -e "SELECT * FROM default.diamonds LIMIT 2"
-
+          
+          
+          
           
           # todo: need to connect to github secrets and pull the credentials. 
           # todo: connect tot the warehouse cluster
