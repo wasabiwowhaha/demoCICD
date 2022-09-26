@@ -31,7 +31,7 @@ jobs:
       - name: install dbsqlcli
         run: |
           python3 -m pip install dbsqlcli
-          dbsqlcli  # Generates the default config file
+          dbsqlcli || return 0 # Generates the default config file
           
       - name: connect to Databricks-sql-cli
         env:
