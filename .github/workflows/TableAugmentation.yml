@@ -33,7 +33,7 @@ jobs:
           DBSQLCLI_HTTP_PATH: ${{ secrets.DBSQLCLI_HTTP_PATH }}
         run: |
           python3 -m pip install databricks-sql-cli
-          dbsqlcli
+          
           
           echo trying to run the next step
           
