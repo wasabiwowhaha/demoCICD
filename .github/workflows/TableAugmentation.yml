@@ -140,6 +140,7 @@ jobs:
           python3 -m pip install dbsqlcli
           
       - name: connect to Databricks-sql-cli
+        if: always()
         run: |          
           
           dbsqlcli -e "SELECT * FROM default.diamonds LIMIT 2" --hostname ${{ secrets.DBSQLCLI_HOST_NAME }} --http-path ${{ secrets.DBSQLCLI_HTTP_PATH }} --access-token ${{ secrets.DBSQLCLI_ACCESS_TOKEN }}
