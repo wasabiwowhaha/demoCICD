@@ -133,11 +133,6 @@ jobs:
           # Favorite queries.
           [favorite_queries]
           
-          #[credentials]
-          #host_name = $DBSQL_HOST_NAME
-          #http_path = $DBSQL_HTTP_PATH
-          #access_token = $DBSQL_ACCESS_TOKEN
-          
           EOF
 
       - name: install dbsqlcli
@@ -146,12 +141,8 @@ jobs:
           
       - name: connect to Databricks-sql-cli
         run: |          
-          cat ~/.dbsqlcli/dbsqlclirc
           
-          dbsqlcli -e "SELECT * FROM default.diamonds LIMIT 2" \
-          --hostname $DBSQL_HOST_NAME \
-          --http-path $DBSQL_HTTP_PATH \
-          --access-token $DBSQL_ACCESS_TOKEN
+          dbsqlcli -e "SELECT * FROM default.diamonds LIMIT 2" --hostname $DBSQL_HOST_NAME --http-path $DBSQL_HTTP_PATH --access-token $DBSQL_ACCESS_TOKEN 
           
           
           
