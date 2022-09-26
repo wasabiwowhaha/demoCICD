@@ -31,9 +31,12 @@ jobs:
       - name: create the dbsqlcli config file
         run: |
           mkdir ~/.dbsqlcli
+          
           cd ~/.dbsqlcli 
+          
           touch dbsqlclirc
-          cat > ~/.dbsqlcli/dbsqlclirc <<EOF                                                                                                                took  1m 49s  Catalyst_Databrick at  14:58:49
+          
+          cat > ~/.dbsqlcli/dbsqlclirc <<EOF
           
           
           [main]
