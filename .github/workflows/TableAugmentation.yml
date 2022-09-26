@@ -155,3 +155,5 @@ jobs:
           # todo: check if tables exists within the cluster. -> perform short simple query. 
           # todo: check if commit file name starts with "create", ends with ".sql"
           
+      - name: print log file
+        run: cat ~/.dbsqlcli/app.log
