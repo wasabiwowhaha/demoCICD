@@ -35,7 +35,7 @@ jobs:
           python3 -m pip install databricks-sql-cli
           dbsqlcli
           # todo: update the file 
-          #dbsqlcli -e "SELECT * FROM default.diamonds LIMIT 2" \
+          dbsqlcli -e "SELECT * FROM default.diamonds LIMIT 2"
           #  --hostname "$host_name" \
           #  --http-path "$http_path" \
           #  --access-token "$access_token"
