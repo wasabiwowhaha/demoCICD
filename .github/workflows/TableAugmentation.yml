@@ -28,10 +28,17 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Install and connect to Databricks-sql-cli
         env:
-          credentials: ${{ secrets.DATABRICKS_GITHUB }}
+          access_token: ${{ secrets.DBSQLCLI_ACCESS_TOKEN }}
+          host_name: ${{ secrets.DBSQLCLI_HOST_NAME }}
+          http_path: ${{ DBSQLCLI_HTTP_PATH }}
         run: |
           python3 -m pip install databricks-sql-cli
-          cat ~/.dbsqlcli/dbsqlclirc  # This is the databricks config file that connects to the sql-warehouse-cluster. 
+          #dbsqlcli -e "SELECT * FROM default.diamonds LIMIT 2" \
+          #  --hostname "dbc-a1b2345c-d6e78.cloud.databricks.com" \
+          #  --http-path "/sql/1.0/warehouses/1abc2d3456e7f890a" \
+          #  --access-token "dapi1234567890b2cd34ef5a67bc8de90fa12b"
+
+          # cat ~/.dbsqlcli/dbsqlclirc  # This is the databricks config file that connects to the sql-warehouse-cluster. 
           # todo: need to connect to github secrets and pull the credentials. 
           # todo: connect tot the warehouse cluster
           # todo: check if tables exists within the cluster. -> perform short simple query. 
@@ -39,4 +46,6 @@ jobs:
           
           echo Add other actions to build,
           echo test, and deploy your project.
-          echo $credentials
+          echo $access_token
+          echo $host_name
+          echo $http_path
