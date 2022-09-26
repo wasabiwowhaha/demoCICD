@@ -33,7 +33,9 @@ jobs:
           python3 -m pip install dbsqlcli
           
       - name: initial setup of dbsqlcli
-        run: dbsqlcli
+        run: |
+          mkdir  ~/.dbsqlcli 
+          touch  ~/.dbsqlcli/dbsqlclirc 
           
       - name: connect to Databricks-sql-cli
         if: always()  # because previous step always turn out an error 
