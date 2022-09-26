@@ -16,9 +16,10 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "updateTables"
-  updateTables:
+  updateTestTables:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
+    environment: test
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -30,10 +31,12 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: create the dbsqlcli config file
         env:
-          DBSQLCLI_ACCESS_TOKEN: "${{ secrets.TEWT }}"
-          DBSQLCLI_HOST_NAME: "${{ secrets.DBSQLCLI_HOST_NAME }}"
-          DBSQLCLI_HTTP_PATH: "${{ secrets.DBSQLCLI_HTTP_PATH }}"
+          DBSQLCLI_ACCESS_TOKEN: ${{ secrets.DBSQLCLI_ACCESS_TOKEN }}
+          DBSQLCLI_HOST_NAME: ${{ secrets.DBSQLCLI_HOST_NAME }}
+          DBSQLCLI_HTTP_PATH: ${{ secrets.DBSQLCLI_HTTP_PATH }}
         run: |
+          echo $DBSQLCLI_ACCESS_TOKEN
+          
           mkdir ~/.dbsqlcli
           
           cd ~/.dbsqlcli 
