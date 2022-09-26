@@ -133,10 +133,9 @@ jobs:
           [favorite_queries]
           
           [credentials]
-          host_name = "$(DBSQLCLI_HOST_NAME)"
-          http_path = "$(DBSQLCLI_HTTP_PATH)"
-          access_token = "$(DBSQLCLI_ACCESS_TOKEN)"
-
+          host_name = "${#DBSQLCLI_HOST_NAME}"
+          http_path = "${#DBSQLCLI_HTTP_PATH}"
+          access_token = "${#DBSQLCLI_ACCESS_TOKEN}"
           
           EOF
           
@@ -153,7 +152,8 @@ jobs:
           DBSQLCLI_HTTP_PATH: ${{ secrets.DBSQLCLI_HTTP_PATH }}
         run: |          
           
-          echo ${DBSQLCLI_HOST_NAME}
+          echo ${#DBSQLCLI_HOST_NAME}
+          echo "${#DBSQLCLI_HOST_NAME}"
           
           dbsqlcli -e "SELECT * FROM default.diamonds LIMIT 2"
           
