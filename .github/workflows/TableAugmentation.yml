@@ -31,9 +31,9 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: create the dbsqlcli config file
         env:
-          DBSQLCLI_ACCESS_TOKEN: ${{ secrets.DBSQLCLI_ACCESS_TOKEN }}
-          DBSQLCLI_HOST_NAME: ${{ secrets.DBSQLCLI_HOST_NAME }}
-          DBSQLCLI_HTTP_PATH: ${{ secrets.DBSQLCLI_HTTP_PATH }}
+          DBSQL_ACCESS_TOKEN: ${{ secrets.DBSQLCLI_ACCESS_TOKEN }}
+          DBSQL_HOST_NAME: ${{ secrets.DBSQLCLI_HOST_NAME }}
+          DBSQL_HTTP_PATH: ${{ secrets.DBSQLCLI_HTTP_PATH }}
         run: |
           mkdir ~/.dbsqlcli
           
@@ -134,9 +134,9 @@ jobs:
           [favorite_queries]
           
           [credentials]
-          host_name = $DBSQLCLI_HOST_NAME
-          http_path = $DBSQLCLI_HTTP_PATH
-          access_token = $DBSQLCLI_ACCESS_TOKEN
+          host_name = $DBSQL_HOST_NAME
+          http_path = $DBSQL_HTTP_PATH
+          access_token = $DBSQL_ACCESS_TOKEN
           
           EOF
 
@@ -148,16 +148,10 @@ jobs:
         run: |          
           cat ~/.dbsqlcli/dbsqlclirc
           
-          # dbsqlcli -e "SELECT * FROM default.diamonds LIMIT 2"
+          dbsqlcli -e "SELECT * FROM default.diamonds LIMIT 2"
           
           
           
-          
-          # todo: need to connect to github secrets and pull the credentials. 
-          # todo: connect tot the warehouse cluster
           # todo: check if tables exists within the cluster. -> perform short simple query. 
           # todo: check if commit file name starts with "create", ends with ".sql"
-          
-          #echo Add other actions to build,
-          #echo test, and deploy your project.
           
