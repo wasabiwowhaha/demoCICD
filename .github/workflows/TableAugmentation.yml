@@ -34,8 +34,7 @@ jobs:
           
       - name: initial setup of dbsqlcli
         run: |
-          mkdir  ~/.dbsqlcli 
-          touch  ~/.dbsqlcli/dbsqlclirc 
+          dbsqlcli
           
       - name: connect to Databricks-sql-cli
         if: always()  # because previous step always turn out an error 
