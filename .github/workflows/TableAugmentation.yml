@@ -35,8 +35,6 @@ jobs:
           DBSQLCLI_HOST_NAME: ${{ secrets.DBSQLCLI_HOST_NAME }}
           DBSQLCLI_HTTP_PATH: ${{ secrets.DBSQLCLI_HTTP_PATH }}
         run: |
-          echo $DBSQLCLI_ACCESS_TOKEN
-          
           mkdir ~/.dbsqlcli
           
           cd ~/.dbsqlcli 
@@ -136,9 +134,9 @@ jobs:
           [favorite_queries]
           
           [credentials]
-          host_name = "${#DBSQLCLI_HOST_NAME}"
-          http_path = "${#DBSQLCLI_HTTP_PATH}"
-          access_token = "${#DBSQLCLI_ACCESS_TOKEN}"
+          host_name = $DBSQLCLI_HOST_NAME
+          http_path = $DBSQLCLI_HTTP_PATH
+          access_token = $DBSQLCLI_ACCESS_TOKEN
           
           EOF
           
@@ -149,14 +147,8 @@ jobs:
           python3 -m pip install dbsqlcli
           
       - name: connect to Databricks-sql-cli
-        env:
-          DBSQLCLI_ACCESS_TOKEN: ${{ secrets.DBSQLCLI_ACCESS_TOKEN }}
-          DBSQLCLI_HOST_NAME: ${{ secrets.DBSQLCLI_HOST_NAME }}
-          DBSQLCLI_HTTP_PATH: ${{ secrets.DBSQLCLI_HTTP_PATH }}
         run: |          
-          
-          echo ${#DBSQLCLI_HOST_NAME}
-          echo "${#DBSQLCLI_HOST_NAME}"
+          echo $DBSQLCLI_HOST_NAME
           
           dbsqlcli -e "SELECT * FROM default.diamonds LIMIT 2"
           
