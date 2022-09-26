@@ -28,19 +28,17 @@ jobs:
           python-version: 3.9 #install the python version needed
       
       # Runs a set of commands using the runners shell
-      - name: Install and connect to Databricks-sql-cli
-        
+      - name: install dbsqlcli
+        run: |
+          python3 -m pip install dbsqlcli
+          dbsqlcli  # Generates the default config file
+          
+      - name: connect to Databricks-sql-cli
         env:
           DBSQLCLI_ACCESS_TOKEN: ${{ secrets.DBSQLCLI_ACCESS_TOKEN }}
           DBSQLCLI_HOST_NAME: ${{ secrets.DBSQLCLI_HOST_NAME }}
           DBSQLCLI_HTTP_PATH: ${{ secrets.DBSQLCLI_HTTP_PATH }}
-        run: |
-          python3 -m pip install dbsqlcli
-          
-          
-          echo trying to run the next step
-          
-          # todo: update the file 
+        run: |          
           dbsqlcli -e "SELECT * FROM default.diamonds LIMIT 2"
           #  --hostname "$DBSQLCLI_HOST_NAME" \
           #  --http-path "$DBSQLCLI_HTTP_PATH" \
