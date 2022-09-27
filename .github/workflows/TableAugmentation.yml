@@ -16,21 +16,22 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "updateTables"
-  updateTestTables:
+  build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
+    name: updateTestTables
     environment: test
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
+    steps:  # Steps represent a sequence of tasks that will be executed as part of the job
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v1
         with:
           python-version: 3.9 #install the python version needed
           fetch-depth: 0  # OR "2" -> To retrieve the preceding commit.
           
-      - name: Get changed files
-        uses: tj-actions/changed-files@v31
+      - name: Changed Files
+        id: changed-files  # id used in next steps -> steps.changed-files.....
+        uses: tj-actions/changed-files@v31.0.1
+        
       - name: Check for .sql files 
         run: |
           ls -l | grep ${{ steps.changed-files.outputs.all_changed_files }};
