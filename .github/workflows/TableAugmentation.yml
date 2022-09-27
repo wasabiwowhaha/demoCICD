@@ -34,7 +34,6 @@ jobs:
         
       - name: Check for .sql files 
         run: |
-          ls -l | grep ${{ steps.changed-files.outputs.all_changed_files }};
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
             echo "details for: $file"
             cat $file
