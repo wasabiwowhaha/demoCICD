@@ -34,12 +34,23 @@ jobs:
         
       - name: Check for .sql files 
         run: |
+          # list of changed sql files identified.
+          declare -a LIST_OF_CHANGED_SQL_FILES=()
+          
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
-            echo "details for: $file"
-            cat $file
+            # if file came from directory, and ends with .sql;  
+          
+            
+            LIST_OF_CHANGED_SQL_FILES+=(file)
           done;
       
-  
+      - name: print out changed sql files
+        run: |
+          cat LIST_OF_CHANGED_SQL_FILES
+          
+          
+          
+          
           
       - name: install dbsqlcli
         run: |
