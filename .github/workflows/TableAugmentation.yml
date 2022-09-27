@@ -34,6 +34,11 @@ jobs:
       - name: Check for .sql files 
         run: |
           ls -l ${{ steps.changed-files.outputs.all_changed_files }}
+          for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
+            echo "details for: $file"
+            cat $file
+          done;
+      
   
           
       - name: install dbsqlcli
