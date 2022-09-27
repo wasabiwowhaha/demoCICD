@@ -47,10 +47,7 @@ jobs:
       - name: print out changed sql files
         run: |
           cat LIST_OF_CHANGED_SQL_FILES
-          
-          
-          
-          
+
           
       - name: install dbsqlcli
         run: |
