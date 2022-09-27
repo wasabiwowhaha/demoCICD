@@ -27,6 +27,14 @@ jobs:
       - uses: actions/checkout@v1
         with:
           python-version: 3.9 #install the python version needed
+          fetch-depth: 0  # OR "2" -> To retrieve the preceding commit.
+          
+      - name: Get changed files
+        uses: tj-actions/changed-files@v31
+      - name: Check for .sql files 
+        run: |
+          ls -l ${{ steps.changed-files.outputs.all_changed_files }}
+  
           
       - name: install dbsqlcli
         run: |
